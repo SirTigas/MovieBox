@@ -103,6 +103,24 @@ npm run dev
 
 ## 🔌 Integração com API
 
+Este projeto precisa de uma chave de API da OMDb para buscar dados de filmes.
+
+1. Acesse o site da OMDb:
+
+https://www.omdbapi.com/apikey.aspx
+
+2. Solicite uma **API key gratuita**.
+
+3. Adicione a chave no seu arquivo `.env`:
+
+```env
+OMDB_API_KEY=sua_api_key_aqui
+```
+
+Certifique-se de que o arquivo `.env` **não seja enviado para o repositório**.
+
+O projeto utiliza essa chave através da configuração de variáveis de ambiente do Laravel.
+
 O MovieBox consome dados de uma API externa de filmes para obter informações como:
 
 - Título
@@ -265,6 +283,24 @@ npm run dev
 ---
 
 ## 🔌 API Integration
+
+This project requires an API key from OMDb to fetch movie data.
+
+1. Go to the OMDb website:
+
+https://www.omdbapi.com/apikey.aspx
+
+2. Request a free API key.
+
+3. Add the key to your `.env` file:
+
+```env
+OMDB_API_KEY=your_api_key_here
+```
+
+Make sure your `.env` file is **not committed to the repository**.
+
+The project reads this key through Laravel's environment configuration.
 
 MovieBox consumes data from an external movie API to retrieve information such as:
 

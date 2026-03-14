@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
     @inertiaHead
     @routes
 </head>
-<body>
+<body class="bg-gray-200 text-slate-800 dark:bg-slate-900 dark: dark:dark:text-white transition-colors">
     @inertia
 </body>
 </html>

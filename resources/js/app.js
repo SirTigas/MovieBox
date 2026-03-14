@@ -1,7 +1,10 @@
 import './bootstrap';
+import '../css/app.css';
+
 import { createApp, h } from 'vue'
 import {createInertiaApp, Head, Link} from '@inertiajs/vue3'
 import {ZiggyVue} from "../../vendor/tightenco/ziggy"
+import {setThemeOnLoad} from "./theme.js";
 import Layout from "./Layouts/Layout.vue";
 
 createInertiaApp({
@@ -20,3 +23,5 @@ createInertiaApp({
             .mount(el)
     },
 })
+
+setThemeOnLoad();
