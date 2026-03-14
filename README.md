@@ -1,59 +1,325 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MovieBox 🎬 - 🇧🇷🇵🇹 Português
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+MovieBox é uma aplicação web para **buscar filmes e organizar uma watchlist pessoal**.  
+O projeto consome dados de uma API externa de filmes e permite que usuários salvem filmes que desejam assistir ou que já assistiram.
 
-## About Laravel
+Este projeto foi desenvolvido com foco em **aprendizado de integração com APIs externas, organização de código e boas práticas em aplicações Laravel modernas**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Laravel](https://img.shields.io/badge/Laravel-12-red)
+![Vue](https://img.shields.io/badge/Vue-3-green)
+![Inertia](https://img.shields.io/badge/Inertia.js-SPA-purple)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Tecnologias utilizadas
 
-## Learning Laravel
+- **PHP**
+- **Laravel**
+- **Inertia.js**
+- **Vue.js**
+- **Tailwind CSS**
+- **MySQL**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🎯 Objetivo do projeto
 
-## Laravel Sponsors
+O objetivo do MovieBox é permitir que usuários:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- 🔎 Pesquisem filmes utilizando uma API externa
+- 📄 Visualizem informações detalhadas sobre cada filme
+- ⭐ Criem e gerenciem uma lista pessoal de filmes
+- 📝 Registrem notas ou status de filmes (ex: quero assistir / já assisti)
 
-### Premium Partners
+Além disso, o projeto também serve como **portfólio de desenvolvimento**, demonstrando habilidades em:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Consumo de APIs externas
+- Manipulação de dados JSON
+- Arquitetura de aplicações Laravel
+- Integração entre backend e frontend com Inertia.js
+- Persistência de dados com MySQL
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## ⚙️ Instalação
 
-## Code of Conduct
+Clone o repositório:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone git@github.com:SirTigas/MovieBox.git
+```
 
-## Security Vulnerabilities
+Entre na pasta do projeto:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+cd MovieBox
+```
 
-## License
+Instale as dependências do backend:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+composer install
+```
+
+Instale as dependências do frontend:
+
+```bash
+npm install
+```
+
+Copie o arquivo de ambiente:
+
+```bash
+cp .env.example .env
+```
+
+Gere a chave da aplicação:
+
+```bash
+php artisan key:generate
+```
+
+Configure o banco de dados no arquivo `.env`.
+
+Execute as migrations:
+
+```bash
+php artisan migrate
+```
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+php artisan serve
+```
+
+Em outro terminal, execute o Vite:
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔌 Integração com API
+
+O MovieBox consome dados de uma API externa de filmes para obter informações como:
+
+- Título
+- Ano de lançamento
+- Gênero
+- Sinopse
+- Avaliação
+- Pôster
+
+A comunicação com a API é feita através do **Laravel HTTP Client**.
+
+---
+
+## 📂 Estrutura do projeto (simplificada)
+
+```
+app/
+ ├── Http/Controllers
+ ├── Services
+ └── Models
+
+resources/
+ └── js/
+      ├── Pages
+      ├── Components
+      └── Layouts
+```
+
+- **Controllers**: recebem as requisições da aplicação
+- **Services**: responsáveis pela comunicação com APIs externas
+- **Pages (Vue)**: telas principais da aplicação
+- **Components**: componentes reutilizáveis do frontend
+- **Layouts**: estrutura base das páginas da aplicação
+
+---
+
+## 🧠 Aprendizados com o projeto
+
+Este projeto aborda conceitos importantes como:
+
+- Consumo de APIs REST
+- Manipulação de respostas JSON
+- Separação de responsabilidades no Laravel
+- Integração backend + frontend com Inertia.js
+- Organização de código em projetos reais
+
+---
+
+## 📌 Status do projeto
+
+🚧 Em desenvolvimento.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Tiago Rodrigues**.
+
+# MovieBox 🎬 - 🇺🇸🇬🇧 English
+
+MovieBox is a web application designed to **search for movies and organize a personal watchlist**.  
+The project consumes data from an external movie API and allows users to save movies they want to watch or have already watched.
+
+This project was developed with a focus on **learning how to integrate external APIs, organize code properly, and follow good practices in modern Laravel applications**.
+
+![Laravel](https://img.shields.io/badge/Laravel-12-red)
+![Vue](https://img.shields.io/badge/Vue-3-green)
+![Inertia](https://img.shields.io/badge/Inertia.js-SPA-purple)
+
+---
+
+## 🚀 Technologies Used
+
+- **PHP**
+- **Laravel**
+- **Inertia.js**
+- **Vue.js**
+- **Tailwind CSS**
+- **MySQL**
+
+---
+
+## 🎯 Project Goal
+
+The goal of MovieBox is to allow users to:
+
+- 🔎 Search for movies using an external API
+- 📄 View detailed information about each movie
+- ⭐ Create and manage a personal movie watchlist
+- 📝 Add personal notes or movie status (e.g., want to watch / watched)
+
+In addition, this project also serves as a **development portfolio project**, demonstrating skills in:
+
+- Consuming external APIs
+- Handling JSON data
+- Laravel application architecture
+- Backend and frontend integration with Inertia.js
+- Data persistence using MySQL
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone git@github.com:SirTigas/MovieBox.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd MovieBox
+```
+
+Install backend dependencies:
+
+```bash
+composer install
+```
+
+Install frontend dependencies:
+
+```bash
+npm install
+```
+
+Copy the environment file:
+
+```bash
+cp .env.example .env
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+Configure the database inside the `.env` file.
+
+Run the migrations:
+
+```bash
+php artisan migrate
+```
+
+Start the development server:
+
+```bash
+php artisan serve
+```
+
+In another terminal, run Vite:
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔌 API Integration
+
+MovieBox consumes data from an external movie API to retrieve information such as:
+
+- Title
+- Release year
+- Genre
+- Plot
+- Rating
+- Poster
+
+The communication with the API is handled using the **Laravel HTTP Client**.
+
+---
+
+## 📂 Project Structure (simplified)
+
+```
+app/
+ ├── Http/Controllers
+ ├── Services
+ └── Models
+
+resources/
+ └── js/
+      ├── Pages
+      ├── Components
+      └── Layouts
+```
+
+- **Controllers**: handle application requests
+- **Services**: responsible for communicating with external APIs
+- **Pages (Vue)**: main application screens
+- **Components**: reusable frontend components
+- **Layouts**: base structure used across pages
+
+---
+
+## 🧠 What This Project Covers
+
+This project explores important concepts such as:
+
+- Consuming REST APIs
+- Handling JSON responses
+- Separation of responsibilities in Laravel
+- Backend and frontend integration with Inertia.js
+- Code organization in real-world projects
+
+---
+
+## 📌 Project Status
+
+🚧 In development.
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Tiago Rodrigues**.
