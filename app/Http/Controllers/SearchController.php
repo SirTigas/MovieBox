@@ -21,4 +21,17 @@ class SearchController extends Controller
             'filters' => $request->search,
         ]);
     }
+
+    //Return details about specific movie
+    public function searchMovieDetail(Request $request, MovieService $movieService){
+        $movieDetails = [];
+
+        if($request->movieID){
+            $movieDetails = $movieService->getMovieDetails($request->movieID);
+        }
+
+        return Inertia::render('Movies/MovieDetail', [
+            'movieDetails' => $movieDetails,
+        ]);
+    }
 }

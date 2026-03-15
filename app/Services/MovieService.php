@@ -21,4 +21,19 @@ class MovieService {
         }
         return $data["Search"] ?? [];
     }
+
+    public function getMovieDetails(string $movieID): array{
+        $response = Http::get("http://www.omdbapi.com/", [
+            "i" => $movieID,
+            "apikey" => config('services.omdb.key'),
+        ]);
+
+        $data = $response->json();
+
+        if (($data['Response'] ?? 'False') === 'False'){
+            return [];
+        }
+
+        return $data ?? [];
+    }
 }

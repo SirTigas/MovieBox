@@ -5,6 +5,8 @@ use App\Http\Controllers\SearchController;
 
 route::inertia('/', 'Home')->name('home');
 
-route::middleware('guest')->group(function () {
-    route::get('/movie', SearchController::class)->name('movie.search');
-});
+//Movie search
+route::get('/movie', SearchController::class)->name('movie.search');
+
+//Movie Detail
+route::get('/movie-detail/{movieID}', [searchController::class, 'searchMovieDetail'])->name('movie.detail');
