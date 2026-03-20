@@ -5,10 +5,6 @@ defineProps({
         default: 'submit'
     },
 
-    action: {
-        type: String,
-        default: 'Action'
-    }
 })
 </script>
 
@@ -26,7 +22,7 @@ defineProps({
                     cursor-pointer
             "
     >
-        {{ action }}
+        <slot/>
     </button>
 </template>
 

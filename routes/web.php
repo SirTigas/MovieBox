@@ -5,6 +5,8 @@ use App\Http\Controllers\SearchController;
 
 route::inertia('/', 'Home')->name('home');
 
+sleep(1);
+
 //Movie search
 route::get('/movie', SearchController::class)->name('movie.search');
 

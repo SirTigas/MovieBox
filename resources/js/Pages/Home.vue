@@ -17,7 +17,7 @@ const submit = () =>{
 
     <section class="max-w-5xl mx-auto px-6 py-24 text-center">
 
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
             Discover your next movie
         </h1>
 
@@ -33,10 +33,9 @@ const submit = () =>{
                 v-model="form.search"
             />
 
-            <PrimaryBtn
-                type="submit"
-                action="Search"
-            />
+            <PrimaryBtn type="submit">
+                Search
+            </PrimaryBtn>
         </form>
     </section>
 </template>

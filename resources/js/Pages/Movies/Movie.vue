@@ -1,5 +1,5 @@
 <script setup>
-import Card from "../../Components/Card.vue";
+import CardPoster from "../../Components/CardPoster.vue";
 import {Head} from "@inertiajs/vue3";
 
 defineProps({
@@ -17,7 +17,7 @@ defineProps({
             Search Results
         </h1>
 
-        <Card
+        <CardPoster
             :movies="movies"
         />
 
