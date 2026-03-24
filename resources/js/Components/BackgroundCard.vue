@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <section class="min-h-screen bg-white dark:bg-[#0B1120] rounded-2xl">
+    <section class="min-h-screen bg-white dark:bg-slate-950 rounded-2xl">
         <slot />
     </section>
 </template>

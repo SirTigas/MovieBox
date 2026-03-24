@@ -32,21 +32,6 @@ import {switchTheme} from "../theme.js";
                         Watchlist
                     </Link>
 
-                    <span class="text-gray-300 dark:text-gray-500">
-                        |
-                    </span>
-
-                    <Link
-                        href="/login"
-                        class="
-                            text-gray-600 hover:text-gray-900
-                            dark:text-gray-300 dark:hover:text-white
-                            transition
-                        "
-                    >
-                        Login
-                    </Link>
-
                     <!--Switch theme-->
                     <button
                         class="
@@ -64,6 +49,48 @@ import {switchTheme} from "../theme.js";
                     >
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
+
+                    <div v-if="$page.props.auth.user">
+                        <Link
+                            href="/login"
+                            class="
+                            text-gray-600 hover:text-gray-900
+                            dark:text-gray-300 dark:hover:text-white
+                            transition
+                        "
+                        >
+                            Profile
+                        </Link>
+                    </div>
+
+                    <div v-else>
+                        <Link
+                            href="/login"
+                            class="
+                            text-gray-600 hover:text-gray-900
+                            dark:text-gray-300 dark:hover:text-white
+                            transition
+                        "
+                        >
+                            Login
+                        </Link>
+
+                        <span class="text-gray-300 dark:text-gray-500">
+                        |
+                        </span>
+
+                        <Link
+                            :href="route('register')"
+                            class="
+                            text-gray-600 hover:text-gray-900
+                            dark:text-gray-300 dark:hover:text-white
+                            transition
+                        "
+                        >
+                            Register
+                        </Link>
+                    </div>
+
                 </div>
 
             </div>

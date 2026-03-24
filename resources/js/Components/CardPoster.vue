@@ -29,9 +29,9 @@ defineProps({
                 <div class="overflow-hidden">
 
                         <img
-                            :src="movie.Poster !== 'N/A' ? movie.Poster : '../../../public/imgs/default/defaul-post.jpg'"
+                            :src="movie.Poster !== 'N/A' ? movie.Poster : '../../../public/imgs/default/default-post.jpg'"
                             :alt="movie.Title"
-                            class="w-full h-[28rem] object-cover"
+                            class="w-full h-112 object-cover"
                         >
                 </div>
 
