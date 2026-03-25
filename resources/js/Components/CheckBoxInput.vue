@@ -1,4 +1,6 @@
 <script setup>
+const remember = defineModel()
+
 defineProps({
     span: String
 })
@@ -17,6 +19,7 @@ defineProps({
                 dark:border-slate-600
                 dark:bg-slate-800
             "
+            v-model="remember"
         >
         <span>{{ span }}</span>
     </label>

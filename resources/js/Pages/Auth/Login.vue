@@ -7,15 +7,14 @@ import CheckBoxInput from "../../Components/CheckBoxInput.vue";
 import {useForm} from "@inertiajs/vue3";
 
 const form = useForm({
-    name: null,
     email: null,
     password: null,
-    password_confirmation: null,
+    remember: false,
 })
 
 const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset("password", "password_confirmation")
+    form.post(route('login'), {
+        onFinish: () => form.reset("password")
     })
 }
 </script>
@@ -38,28 +37,12 @@ const submit = () => {
                 <Logo/>
 
                 <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
-                    Register to access complete MovieBox content.
+                    Login your account to access complete MovieBox content.
                 </p>
             </div>
 
             <!--Form-->
             <form @submit.prevent="submit" class="space-y-6">
-
-                <div>
-                    <label
-                        for="name"
-                        class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300"
-                    >
-                        Name
-                    </label>
-
-                    <InputField
-                        id="name"
-                        placeholder="Enter your Name"
-                        type="text"
-                        v-model="form.name"
-                    />
-                </div>
 
                 <div>
                     <label
@@ -86,6 +69,13 @@ const submit = () => {
                             Password
                         </label>
 
+                        <a
+                            href="#"
+                            class="text-sm font-medium text-orange-400 transition hover:text-orange-500"
+                        >
+                            Forgot password?
+                        </a>
+
                     </div>
 
                     <InputField
@@ -96,21 +86,10 @@ const submit = () => {
                     />
                 </div>
 
-                <div>
-                    <div class="mb-2 flex items-center justify-between">
-                        <label
-                            for="confirm_password"
-                            class="block text-sm font-medium text-slate-700 dark:text-slate-300"
-                        >
-                            Confirm Password
-                        </label>
-                    </div>
-
-                    <InputField
-                        id="confirm_password"
-                        placeholder="Confirm your password"
-                        type="password"
-                        v-model="form.password_confirmation"
+                <div class="flex items-center justify-between">
+                    <CheckBoxInput
+                        span="Remember me"
+                        v-model="form.remember"
                     />
                 </div>
 
@@ -120,7 +99,7 @@ const submit = () => {
                         class="w-full px-4 py-3"
                         :disabled="form.processing"
                     >
-                        Register
+                        Login
                     </PrimaryBtn>
                 </div>
             </form>
@@ -136,12 +115,12 @@ const submit = () => {
                 </div>
 
                 <p class="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
-                    Already an account?
+                    Need an account?
                     <Link
-                        :href="route('login')"
+                        :href="route('register')"
                         class="font-semibold text-orange-400 transition hover:text-orange-500"
                     >
-                        Login
+                        Register
                     </Link>
                 </p>
             </div>

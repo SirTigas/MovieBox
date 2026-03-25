@@ -52,14 +52,15 @@ import {switchTheme} from "../theme.js";
 
                     <div v-if="$page.props.auth.user">
                         <Link
-                            href="/login"
+                            :href="route('logout')"
+                            method="post"
                             class="
                             text-gray-600 hover:text-gray-900
                             dark:text-gray-300 dark:hover:text-white
                             transition
                         "
                         >
-                            Profile
+                            Logout
                         </Link>
                     </div>
 

@@ -6,10 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class RegisterController extends Controller
 {
-    //
+    public function index(){
+        return Inertia::render('Auth/Register');
+    }
+
+    //Create a new user
     public function store(Request $request){
 
         //Validate fields
