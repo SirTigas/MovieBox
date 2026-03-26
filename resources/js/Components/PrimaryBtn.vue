@@ -5,6 +5,11 @@ defineProps({
         default: 'submit'
     },
 
+    size: {
+        type: String,
+        default: 'py-4',
+    }
+
 })
 </script>
 
@@ -12,15 +17,17 @@ defineProps({
     <button
         :type="type"
         class="
-                    px-6 py-4
-                    rounded-xl
-                    bg-orange-400
-                    hover:bg-orange-500
-                    text-white
-                    font-semibold
-                    transition
-                    cursor-pointer
-            "
+            px-6
+            rounded-xl
+            bg-orange-400
+            hover:bg-orange-500
+            text-white
+            font-semibold
+            transition
+            cursor-pointer
+        "
+
+        :class="size"
     >
         <slot/>
     </button>

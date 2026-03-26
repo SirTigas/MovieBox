@@ -2,11 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
-
-route::inertia('/', 'Home')->name('home');
+use App\Http\Controllers\WatchlistController;
 
 sleep(1);
-
+route::inertia('/', 'Home')->name('home');
 
 //Movie search
 route::get('/movie', SearchController::class)->name('movie.search');
@@ -15,3 +14,7 @@ route::get('/movie', SearchController::class)->name('movie.search');
 route::get('/movie-detail/{movieID}', [searchController::class, 'searchMovieDetail'])->name('movie.detail');
 
 require __DIR__ . '/auth.php';
+
+Route::middleware('auth')->group(function () {
+    route::get('/watchlist', [WatchlistController::class, 'index'])->name('watchlist');
+});

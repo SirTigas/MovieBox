@@ -12,6 +12,11 @@ defineProps({
         default: '',
     },
 
+    size: {
+        type: String,
+        default: 'py-4'
+    }
+
 })
 </script>
 
@@ -23,7 +28,7 @@ defineProps({
         v-model="model"
         class="
             w-full
-            px-5 py-4
+            px-4
             rounded-xl
             border border-slate-300
             dark:border-slate-600
@@ -37,6 +42,7 @@ defineProps({
             focus:ring-orange-400
             transition
         "
+        :class="size"
     >
 </template>
 

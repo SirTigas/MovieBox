@@ -23,7 +23,7 @@ const submit = () => {
 <template>
     <!--Register Component-->
 
-    <Head title="Register" />
+    <Head title="Login" />
     <section class="mx-auto flex max-w-7xl items-center justify-center px-6 py-12">
         <Card
             class="

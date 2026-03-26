@@ -31,6 +31,7 @@ const submit = () =>{
                 type="search"
                 placeholder="Search movies..."
                 v-model="form.search"
+                class="py-4"
             />
 
             <PrimaryBtn type="submit">
