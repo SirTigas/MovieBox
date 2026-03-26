@@ -5,6 +5,7 @@ import PrimaryBtn from "../../Components/PrimaryBtn.vue";
 import Logo from "../../Components/Logo.vue";
 import CheckBoxInput from "../../Components/CheckBoxInput.vue";
 import {useForm} from "@inertiajs/vue3";
+import ErrorMessage from "../../Components/ErrorMessage.vue";
 
 const form = useForm({
     name: null,
@@ -59,6 +60,10 @@ const submit = () => {
                         type="text"
                         v-model="form.name"
                     />
+
+                    <ErrorMessage
+                      :error="$page.props.errors.name"
+                    />
                 </div>
 
                 <div>
@@ -74,6 +79,10 @@ const submit = () => {
                         placeholder="Enter your email"
                         type="email"
                         v-model="form.email"
+                    />
+
+                    <ErrorMessage
+                        :error="$page.props.errors.email"
                     />
                 </div>
 
@@ -93,6 +102,10 @@ const submit = () => {
                         placeholder="Enter your password"
                         type="password"
                         v-model="form.password"
+                    />
+
+                    <ErrorMessage
+                        :error="$page.props.errors.password"
                     />
                 </div>
 

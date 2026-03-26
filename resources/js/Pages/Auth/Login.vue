@@ -5,18 +5,19 @@ import PrimaryBtn from "../../Components/PrimaryBtn.vue";
 import Logo from "../../Components/Logo.vue";
 import CheckBoxInput from "../../Components/CheckBoxInput.vue";
 import {useForm} from "@inertiajs/vue3";
+import ErrorMessage from "../../Components/ErrorMessage.vue";
 
 const form = useForm({
     email: null,
     password: null,
     remember: false,
-})
+});
 
 const submit = () => {
     form.post(route('login'), {
         onFinish: () => form.reset("password")
     })
-}
+};
 </script>
 
 <template>
@@ -39,6 +40,7 @@ const submit = () => {
                 <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
                     Login your account to access complete MovieBox content.
                 </p>
+
             </div>
 
             <!--Form-->
@@ -57,6 +59,10 @@ const submit = () => {
                         placeholder="Enter your email"
                         type="email"
                         v-model="form.email"
+                    />
+
+                    <ErrorMessage
+                        :error="$page.props.errors.email"
                     />
                 </div>
 
@@ -83,6 +89,10 @@ const submit = () => {
                         placeholder="Enter your password"
                         type="password"
                         v-model="form.password"
+                    />
+
+                    <ErrorMessage
+                        :error="$page.props.errors.password"
                     />
                 </div>
 
