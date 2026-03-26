@@ -35,18 +35,6 @@ import {Link} from "@inertiajs/vue3";
                         Home
                     </Link>
 
-                    <Link
-                        :href="route('home')"
-                        class="
-                                hover:text-orange-200
-                                transition
-                                font-bold
-                            "
-
-                        :class="($page.component == 'Movies/Movie') || ($page.component == 'Movies/MovieDetail') ? `text-orange-400` : `text-gray-600 dark:text-gray-300`"
-                    >
-                        Movies
-                    </Link>
 
                     <!--Auth users-->
                     <div v-if="$page.props.auth.user">
@@ -104,7 +92,7 @@ import {Link} from "@inertiajs/vue3";
                             Login
                         </Link>
 
-                        <span class="text-gray-300 dark:text-gray-500">
+                        <span class="text-shadow-slate-950 dark:text-gray-500">
                         |
                         </span>
 
