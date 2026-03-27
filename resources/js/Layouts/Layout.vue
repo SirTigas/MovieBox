@@ -1,7 +1,10 @@
-<script setup xmlns="http://www.w3.org/1999/html">
+<script setup >
 import Logo from "../Components/Logo.vue";
 import {switchTheme} from "../theme.js";
+import {ref} from "vue";
 import {Link} from "@inertiajs/vue3";
+
+const show = ref(false)
 </script>
 
 <template>
@@ -20,13 +23,14 @@ import {Link} from "@inertiajs/vue3";
                 <Logo/>
 
                 <!-- Navigation -->
-                <div class="flex items-center gap-6 text-sm font-medium">
+                <div class="flex items-center gap-3 text-sm font-medium">
 
                     <Link
                         :href="route('home')"
                         class="
                                 hover:text-orange-200
                                 transition
+                                cursor-pointer
                                 font-bold
                             "
 
@@ -37,13 +41,14 @@ import {Link} from "@inertiajs/vue3";
 
 
                     <!--Auth users-->
-                    <div v-if="$page.props.auth.user">
+                    <div v-if="$page.props.auth.user" class="flex">
                         <Link
                             :href="route('watchlist')"
                             class="
                                 hover:text-orange-200
                                 font-bold
                                 mr-10
+                                cursor-pointer
                                 transition
                             "
 
@@ -52,27 +57,53 @@ import {Link} from "@inertiajs/vue3";
                             Watchlist
                         </Link>
 
-                        <Link>
-                            Hello, <b class="text-orange-400">{{ $page.props.auth.user.name }}</b>
-                        </Link>
+                        <!--Dropdown-->
+                        <div >
+                            <button class="cursor-pointer" @click="show = !show">
+                                Hello, <b class="text-orange-400">{{ $page.props.auth.user.name }}</b>
+                                <i class="fa-solid fa-angle-down ml-1" :class="{ 'rotate-180' : show }"></i>
+                            </button>
 
-                        <span class="text-shadow-slate-950 dark:text-gray-500">
-                        |
-                        </span>
-
-                        <Link
-                            :href="route('logout')"
-
-                            method="post"
-
-                            class="
-                                hover:text-orange-200
-                                font-bold
-                                transition
+                            <!--dropdown menu-->
+                            <div
+                                v-show="show"
+                                class="
+                                absolute mt-8 w-52
+                                rounded-xl border border-slate-200
+                                bg-white shadow-lg
+                                dark:border-slate-700 dark:bg-slate-900
+                                overflow-hidden z-50
                             "
-                        >
-                            Logout
-                        </Link>
+                            >
+                                <Link
+                                    href="#"
+                                    class="
+                                    block px-4 py-3 text-sm
+                                    text-slate-700 dark:text-slate-200
+                                    hover:bg-gray-300 dark:hover:bg-slate-800
+                                    transition
+                                "
+                                    @click="show = !show"
+                                >
+                                    Profile
+                                </Link>
+
+                                <Link
+                                    :href="route('logout')"
+                                    method="post"
+                                    class="
+                                        w-full text-left px-4 py-3 text-sm
+                                        text-red-500
+                                        hover:bg-gray-300 dark:hover:bg-slate-800
+                                        transition cursor-pointer
+                                    "
+                                    @click="show = !show"
+                                >
+                                    Logout
+                                </Link>
+                            </div>
+                        </div>
+
                     </div>
 
                     <!--Guest users-->
@@ -83,6 +114,7 @@ import {Link} from "@inertiajs/vue3";
                             class="
                                 hover:text-orange-200
                                 font-bold
+                                cursor-pointer
                                 transition
                             "
 
@@ -102,6 +134,7 @@ import {Link} from "@inertiajs/vue3";
                             class="
                                 hover:text-orange-200
                                 font-bold
+                                cursor-pointer
                                 transition
                             "
 
