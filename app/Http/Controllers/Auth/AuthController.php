@@ -11,7 +11,9 @@ class AuthController extends Controller
 {
     //Return Login page
     public function index(){
-        return Inertia::render('Auth/Login');
+        return Inertia::render('Auth/Login', [
+            'status' => session('status'),
+        ]);
     }
 
     public function store(Request $request){

@@ -6,6 +6,11 @@ import Logo from "../../Components/Logo.vue";
 import CheckBoxInput from "../../Components/CheckBoxInput.vue";
 import {useForm} from "@inertiajs/vue3";
 import ErrorMessage from "../../Components/ErrorMessage.vue";
+import SuccessMessage from "../../Components/SuccessMessage.vue";
+
+defineProps({
+    status: Object,
+})
 
 const form = useForm({
     email: null,
@@ -41,6 +46,9 @@ const submit = () => {
                     Login your account to access complete MovieBox content.
                 </p>
 
+                <SuccessMessage
+                    :success="status"
+                />
             </div>
 
             <!--Form-->
@@ -75,12 +83,12 @@ const submit = () => {
                             Password
                         </label>
 
-                        <a
-                            href="#"
+                        <Link
+                            :href="route('password.request')"
                             class="text-sm font-medium text-orange-400 transition hover:text-orange-500"
                         >
                             Forgot password?
-                        </a>
+                        </Link>
 
                     </div>
 

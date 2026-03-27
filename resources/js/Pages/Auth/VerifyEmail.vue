@@ -2,7 +2,6 @@
 
 import Card from "../../Components/Card.vue";
 import Logo from "../../Components/Logo.vue";
-import {Head, Link} from "@inertiajs/vue3";
 </script>
 
 <template>
