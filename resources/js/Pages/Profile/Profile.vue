@@ -13,7 +13,7 @@ import DeleteAccount from "./DeleteAccount.vue";
             Profile Settings
         </h1>
 
-        <EditEmail/>
+        <EditEmail :userInfo="$page.props.auth.user" :success="$page.props.status"/>
 
         <EditPassword/>
 

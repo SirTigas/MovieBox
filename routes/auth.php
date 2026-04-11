@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
 
     //Profile
     Route::get('/profile', [ProfileEditController::class, 'index'])->name('profile.edit');
-    Route::post('/profile/update/email', [ProfileEditController::class, 'updateEmail'])->middleware('password.confirm')->name('profile.update.email');
+    Route::patch('/profile/update/info', [ProfileEditController::class, 'updateInfo'])->middleware('password.confirm')->name('profile.update.info');
 
     //Password Confirmation
     Route::get('/confirm-password', [PasswordConfirmationController::class, 'create'])->name('password.confirm');
