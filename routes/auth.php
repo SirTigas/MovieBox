@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ProfileEditController;
+use App\Http\Controllers\Auth\PasswordConfirmationController;
 
 
 Route::middleware('guest')->group(function () {
@@ -32,4 +34,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'handler'] )->middleware('signed')->name('verification.verify');
     Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware('throttle:6,1')->name('verification.send');
 
+    //Profile
+    Route::get('/profile', [ProfileEditController::class, 'index'])->name('profile.edit');
+    Route::post('/profile/update/email', [ProfileEditController::class, 'updateEmail'])->middleware('password.confirm')->name('profile.update.email');
+
+    //Password Confirmation
+    Route::get('/confirm-password', [PasswordConfirmationController::class, 'create'])->name('password.confirm');
+    Route::post('/confirm-password', [PasswordConfirmationController::class, 'store'])->middleware('throttle:6,1');
 });

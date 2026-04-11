@@ -57,6 +57,7 @@ class ForgotPasswordController extends Controller
                 $user->save();
 
                 event(new PasswordReset($user));
+
             }
         );
 

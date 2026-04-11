@@ -76,7 +76,7 @@ const show = ref(false)
                             "
                             >
                                 <Link
-                                    href="#"
+                                    :href="route('profile.edit')"
                                     class="
                                     block px-4 py-3 text-sm
                                     text-slate-700 dark:text-slate-200
