@@ -44,7 +44,7 @@ const submit = ()=>{
                 v-model="form.current_password"
             />
             <ErrorMessage
-                :error="$page.props.errors.current_password"
+                :error="form.errors.current_password"
             />
 
             <InputField
@@ -62,7 +62,7 @@ const submit = ()=>{
             />
 
             <ErrorMessage
-                :error="$page.props.errors.password"
+                :error="form.errors.password"
             />
 
             <p v-if="form.recentlySuccessful" class="text-sm text-green-500">Saved!</p>

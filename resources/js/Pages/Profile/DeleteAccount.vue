@@ -1,5 +1,18 @@
 <script setup>
 
+import {useForm} from "@inertiajs/vue3";
+import ErrorMessage from "../../Components/ErrorMessage.vue";
+import InputField from "../../Components/InputField.vue";
+
+const form = useForm({
+    password: null
+})
+
+const submit = () => {
+    form.post(route('profile.destroy'), {
+        onError: () => form.reset('password')
+    })
+}
 </script>
 
 <template>
@@ -19,26 +32,28 @@
             This action is irreversible. All your data will be permanently deleted.
         </p>
 
-        <form class="space-y-4">
-            <input
+        <form @submit.prevent="submit" class="space-y-4">
+            <InputField
                 type="password"
-                placeholder="Enter your password to confirm"
-                class="
-                w-full rounded-xl border border-red-300
-                px-4 py-3
-                bg-white text-slate-900
-                focus:border-red-500 focus:ring-2 focus:ring-red-500/30
-                outline-none transition
-                dark:border-red-700 dark:bg-slate-800 dark:text-white
-                "
-            >
+                size="py-3"
+                placeholder="Type your password to continue"
+                required
+                v-model="form.password"
+            />
+
+            <ErrorMessage
+                :error="form.errors.password"
+            />
 
             <button
                 class="
                 rounded-xl bg-red-500
                 px-5 py-2.5 text-white font-semibold
                 hover:bg-red-600 transition
+                cursor-pointer
                 "
+                :disabled="form.processing"
+                type="submit"
             >
                 Delete Account
             </button>

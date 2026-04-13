@@ -42,7 +42,7 @@ const submit = ()=>{
             />
 
             <ErrorMessage
-                :error="$page.props.errors.name"
+                :error="form.errors.name"
             />
 
             <InputField
@@ -53,7 +53,7 @@ const submit = ()=>{
             />
 
             <ErrorMessage
-                :error="$page.props.errors.email"
+                :error="form.errors.email"
             />
 
             <SuccessMessage
@@ -68,7 +68,7 @@ const submit = ()=>{
                 </p>
             </div>
 
-            <PrimaryBtn size="py-3">
+            <PrimaryBtn :disabled="form.processing" size="py-3">
                 Save
             </PrimaryBtn>
         </form>

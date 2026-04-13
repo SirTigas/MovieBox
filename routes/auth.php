@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile/update/info', [ProfileEditController::class, 'updateInfo'])->middleware('password.confirm')->name('profile.update.info');
     //Update password
     Route::post('/profile/update/password', [ProfileEditController::class, 'updatePassword'])->name('profile.update.password');
+    //Delete account
+    Route::post('/profile/destroy', [ProfileEditController::class, 'destroy'])->name('profile.destroy');
 
     //Password Confirmation
     Route::get('/confirm-password', [PasswordConfirmationController::class, 'create'])->name('password.confirm');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
@@ -61,5 +62,22 @@ class ProfileEditController extends Controller
         $request->user()->save();
 
         return redirect()->route('profile.edit');
+    }
+
+    public function destroy(Request $request){
+        $fields = $request->validate([
+            'password' => ['required', 'current_password'],
+        ]);
+        $user = $request->user();
+
+        //Logout and destroy user
+        Auth::logout($user);
+        User::destroy($user->id);
+
+        //Invalidate session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
     }
 }
