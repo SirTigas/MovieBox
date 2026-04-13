@@ -8,7 +8,7 @@ import ErrorMessage from "../../Components/ErrorMessage.vue";
 
 const props = defineProps({
     userInfo: Object,
-    success: Object
+    status: Object
 })
 
 const form = useForm({
@@ -57,7 +57,7 @@ const submit = ()=>{
             />
 
             <SuccessMessage
-                :success="props.success"
+                :success="props.status"
                 class="mb-2"
             />
 
