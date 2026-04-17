@@ -23,7 +23,9 @@ const submit = () => {
 
 <template>
     <Head title="Movie Detail" />
-
+    <pre>
+    {{ movieDetails }}
+    </pre>
     <BackgroundCard>
         <div class="max-w-7xl mx-auto px-6 py-10">
             <!--Search field-->
