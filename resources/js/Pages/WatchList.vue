@@ -1,10 +1,23 @@
 <script setup>
 import PrimaryBtn from "../Components/PrimaryBtn.vue";
-import {Head, Link} from "@inertiajs/vue3";
+import DangerBtn from "../Components/DangerBtn.vue";
+import {Link, useForm} from "@inertiajs/vue3";
+import InputField from "../Components/InputField.vue";
+import AlertSuccess from "../Components/AlertSuccess.vue";
 
 defineProps({
     watchlist: Object,
+    status: String
 })
+
+const form = useForm({
+    movieId: null,
+})
+
+const submit = (id) => {
+    form.movieId = id
+    form.delete(route('watchlist.destroy'))
+}
 </script>
 
 <template>
@@ -20,6 +33,11 @@ defineProps({
                 {{ watchlist.total }} movies saved
             </span>
         </div>
+
+        <AlertSuccess
+            v-if="form.recentlySuccessful"
+            :status="status"
+        />
 
         <!-- Grid -->
         <div
@@ -49,8 +67,9 @@ defineProps({
                     cursor-pointer
                 "
             >
-                <Link :href="route('movie.detail', movie.imdb_id)">
+
                     <!-- Poster -->
+                <Link :href="route('movie.detail', movie.imdb_id)">
                     <div class="overflow-hidden">
                         <img
                             :src="movie.poster"
@@ -62,12 +81,14 @@ defineProps({
                             "
                         >
                     </div>
+                </Link>
 
 
                     <!-- Overlay (hover) -->
                     <div
                         class="
                             absolute inset-0
+                            pointer-events-none
                             bg-black/60
                             opacity-0
                             group-hover:opacity-100
@@ -76,7 +97,6 @@ defineProps({
                             p-4
                         "
                     >
-
                         <h3 class="text-white font-semibold text-lg leading-tight">
                             {{ movie.title }}
                         </h3>
@@ -84,22 +104,12 @@ defineProps({
                         <p class="text-sm text-gray-300">
                             {{ movie.year }}
                         </p>
-
-                        <button
-                            class="
-                                mt-4
-                                w-full
-                                rounded-lg
-                                bg-red-500
-                                py-2 text-sm font-medium text-white
-                                hover:bg-red-600
-                                transition
-                            "
-                        >
-                            Remove
-                        </button>
+                        <form @submit.prevent="submit(movie.id)" class="pointer-events-auto">
+                            <DangerBtn type="submit" :disabled="form.processing">
+                                <b>Remove</b>
+                            </DangerBtn>
+                        </form>
                     </div>
-                </Link>
             </div>
         </div>
 

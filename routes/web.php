@@ -18,4 +18,5 @@ require __DIR__ . '/auth.php';
 Route::middleware('auth')->group(function () {
     route::get('/watchlist', [WatchlistController::class, 'index'])->name('watchlist');
     route::post('/watchlist', [WatchlistController::class, 'store'])->name('watchlist.store');
+    route::delete('/watchlist', [WatchlistController::class, 'destroy'])->name('watchlist.destroy');
 });

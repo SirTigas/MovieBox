@@ -19,7 +19,7 @@ const form = useForm({
 })
 
 const watchlistForm = useForm({
-    imdbId: props.movieDetails.imdbID,
+    imdb_id: props.movieDetails.imdbID,
     poster: props.movieDetails.Poster,
     title: props.movieDetails.Title,
     year: props.movieDetails.Year
