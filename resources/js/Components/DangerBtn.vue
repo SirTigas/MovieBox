@@ -2,7 +2,7 @@
 defineProps({
     size: {
         type: String,
-        default: 'py-2'
+        default: 'py-3'
     },
 
     type: {
@@ -16,21 +16,20 @@ defineProps({
     <button
         :type="type"
         class="
-            cursor-pointer
-            mt-4
-            w-full
-            rounded-lg
+            px-6
+            rounded-xl
             bg-red-500
-            text-sm font-medium text-white
-            hover:bg-red-600
-            transition
             disabled:bg-red-300
             disabled:cursor-wait
+            hover:bg-red-600
+            font-semibold
+            transition
+            cursor-pointer
         "
+
         :class="size"
     >
-        <slot
-        />
+        <slot/>
     </button>
 </template>
 

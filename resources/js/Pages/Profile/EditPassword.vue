@@ -67,7 +67,7 @@ const submit = ()=>{
 
             <p v-if="form.recentlySuccessful" class="text-sm text-green-500">Saved!</p>
 
-            <PrimaryBtn size="py-3">
+            <PrimaryBtn size="py-3" :disabled="form.processing">
                 Update Password
             </PrimaryBtn>
         </form>

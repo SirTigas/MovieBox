@@ -30,7 +30,7 @@ class WatchlistController extends Controller
         //save movie in db
         Watchlist::create([
             'user_id' => $request->user()->id,
-            'imdb_id' => $request->imdbId,
+            'imdb_id' => $request->imdb_id,
             'poster' => $request->poster,
             'title' => $request->title,
             'year' => $request->year,

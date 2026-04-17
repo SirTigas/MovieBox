@@ -105,7 +105,7 @@ const submit = (id) => {
                             {{ movie.year }}
                         </p>
                         <form @submit.prevent="submit(movie.id)" class="pointer-events-auto">
-                            <DangerBtn type="submit" :disabled="form.processing">
+                            <DangerBtn type="submit" :disabled="form.processing" size="py-2" class="mt-4 w-full">
                                 <b>Remove</b>
                             </DangerBtn>
                         </form>

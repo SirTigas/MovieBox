@@ -3,6 +3,7 @@
 import {useForm} from "@inertiajs/vue3";
 import ErrorMessage from "../../Components/ErrorMessage.vue";
 import InputField from "../../Components/InputField.vue";
+import DangerBtn from "../../Components/DangerBtn.vue";
 
 const form = useForm({
     password: null
@@ -45,18 +46,9 @@ const submit = () => {
                 :error="form.errors.password"
             />
 
-            <button
-                class="
-                rounded-xl bg-red-500
-                px-5 py-2.5 text-white font-semibold
-                hover:bg-red-600 transition
-                cursor-pointer
-                "
-                :disabled="form.processing"
-                type="submit"
-            >
-                Delete Account
-            </button>
+            <DangerBtn type="submit" :disabled="form.processing">
+                <b>Delete Account</b>
+            </DangerBtn>
         </form>
     </div>
 </template>
