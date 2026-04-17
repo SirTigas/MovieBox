@@ -25,6 +25,9 @@ defineProps({
             dark:bg-slate-800
             dark:text-slate-200
             dark:hover:bg-slate-700
+            disabled:bg-slate-400
+            dark:disabled:bg-slate-200
+            disabled:cursor-wait
         "
     >
         <slot/>

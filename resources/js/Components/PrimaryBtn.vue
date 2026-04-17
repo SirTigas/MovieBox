@@ -20,6 +20,8 @@ defineProps({
             px-6
             rounded-xl
             bg-orange-400
+            disabled:bg-orange-200
+            disabled:cursor-wait
             hover:bg-orange-500
             text-white
             font-semibold

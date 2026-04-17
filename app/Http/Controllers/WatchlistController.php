@@ -18,6 +18,14 @@ class WatchlistController extends Controller
 
     //add movie
     public function store(Request $request){
+        Watchlist::create([
+            'user_id' => $request->user()->id,
+            'imdb_id' => $request->imdbId,
+            'poster' => $request->poster,
+            'title' => $request->title,
+            'year' => $request->year,
+        ]);
 
+        return redirect()->back()->with('status', 'Watchlist added!');
     }
 }

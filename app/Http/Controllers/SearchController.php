@@ -32,6 +32,7 @@ class SearchController extends Controller
 
         return Inertia::render('Movies/MovieDetail', [
             'movieDetails' => $movieDetails,
+            'status' => session('status'),
         ]);
     }
 }

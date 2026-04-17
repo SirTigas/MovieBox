@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('imdb_id');
             $table->string('title');
-            $table->string('poster');
+            $table->string('poster')->nullable();
+            $table->string('year')->nullable();
             $table->timestamps();
         });
     }

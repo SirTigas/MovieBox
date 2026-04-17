@@ -7,25 +7,37 @@ import InputField from "../../Components/InputField.vue";
 import PrimaryTag from "../../Components/PrimaryTag.vue";
 import SecondaryTag from "../../Components/SecondaryTag.vue";
 import {useForm} from "@inertiajs/vue3";
+import AlertSuccess from "../../Components/AlertSuccess.vue";
 
-defineProps({
-    movieDetails: Object
+const props = defineProps({
+    movieDetails: Object,
+    status: String,
 })
 
 const form = useForm({
     search: null
 })
 
+const watchlistForm = useForm({
+    imdbId: props.movieDetails.imdbID,
+    poster: props.movieDetails.Poster,
+    title: props.movieDetails.Title,
+    year: props.movieDetails.Year
+})
+
 const submit = () => {
     form.get(route('movie.search'))
+}
+
+const submitWatchlist = () => {
+    watchlistForm.post(route('watchlist.store'), {
+        preserveScroll: true,
+    })
 }
 </script>
 
 <template>
-    <Head title="Movie Detail" />
-    <pre>
-    {{ movieDetails }}
-    </pre>
+    <Head title="Movie Details" />
     <BackgroundCard>
         <div class="max-w-7xl mx-auto px-6 py-10">
             <!--Search field-->
@@ -136,13 +148,21 @@ const submit = () => {
 
                             <!--Actions-->
                             <div class="mt-8 flex flex-wrap gap-4">
-                                <PrimaryBtn>
-                                    Add to Watchlist
-                                </PrimaryBtn>
+                                <form @submit.prevent="submitWatchlist">
+                                    <PrimaryBtn type="submit" :disabled="watchlistForm.processing">
+                                        Add to Watchlist
+                                    </PrimaryBtn>
+                                </form>
 
                                 <SecondaryBtn>
                                     Watch Trailer
                                 </SecondaryBtn>
+
+                                <AlertSuccess
+                                    v-if="watchlistForm.recentlySuccessful"
+                                    :status="props.status"
+                                />
+
                             </div>
                         </div>
                     </div>
@@ -224,6 +244,7 @@ const submit = () => {
             </div>
         </div>
     </BackgroundCard>
+
 </template>
 
 <style scoped>
