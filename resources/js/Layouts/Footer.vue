@@ -52,13 +52,13 @@ import Logo from "../Components/Logo.vue";
 
                     <div class="flex items-center gap-4 text-lg">
 
-                        <Link href="#" class="text-slate-600 dark:text-slate-400 hover:text-orange-400 transition">
+                        <a href="https://github.com/SirTigas" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-orange-400 transition">
                             <i class="fa-brands fa-github"></i>
-                        </Link>
+                        </a>
 
-                        <Link href="#" class="text-slate-600 dark:text-slate-400 hover:text-orange-400 transition">
+                        <a href="https://www.linkedin.com/in/tiago-rodrigues-cardoso/" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-orange-400 transition">
                             <i class="fa-brands fa-linkedin"></i>
-                        </Link>
+                        </a>
 
                     </div>
                 </div>

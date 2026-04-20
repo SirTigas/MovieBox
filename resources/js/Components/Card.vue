@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
-    style: {
-        type: String,
+    class: {
+        type: [String, Array, Object],
         default: '',
     }
 })
@@ -10,19 +10,16 @@ defineProps({
 <template>
     <div
         class="
-            rounded-2xl border border-slate-200
-            bg-white p-6 shadow-sm
+            rounded-2xl
+            border border-slate-200
+            bg-white
+            p-4 sm:p-6
+            shadow-sm
             dark:border-slate-700
             dark:bg-slate-900
         "
-
-        :class="style"
+        :class="$props.class"
     >
         <slot/>
-
     </div>
 </template>
-
-<style scoped>
-
-</style>
