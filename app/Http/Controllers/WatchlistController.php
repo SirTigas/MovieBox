@@ -19,6 +19,14 @@ class WatchlistController extends Controller
 
     //add movie
     public function store(Request $request){
+        //validate fields
+        $fields = $request->validate([
+            'imdb_id' => 'required|string|max:20|alpha_num',
+            'title' => 'required|string|max:200',
+            'poster' => 'nullable|url|max:500',
+            'year' => 'nullable|digits:4|integer',
+        ]);
+
         //verify if exists register in db
         $exists = Watchlist::where('user_id', $request->user()->id)
             ->where('imdb_id', $request->imdb_id);
@@ -28,13 +36,7 @@ class WatchlistController extends Controller
         }
 
         //save movie in db
-        Watchlist::create([
-            'user_id' => $request->user()->id,
-            'imdb_id' => $request->imdb_id,
-            'poster' => $request->poster,
-            'title' => $request->title,
-            'year' => $request->year,
-        ]);
+        Watchlist::create($fields);
 
         return redirect()->back()->with('status', 'Watchlist added!');
     }
