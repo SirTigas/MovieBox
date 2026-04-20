@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function store(Request $request){
         //Validate request
         $credentials = $request->validate([
-            'email' => 'required|email|exists:users,email',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
