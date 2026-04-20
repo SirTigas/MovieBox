@@ -54,7 +54,7 @@ class ProfileEditController extends Controller
         //validate input
         $fields = $request->validate([
             'current_password' => ['required', 'current_password'],
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'password' => ['required', 'string', 'min:8','max:20', 'confirmed'],
         ]);
 
         //update password

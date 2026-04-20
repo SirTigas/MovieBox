@@ -22,7 +22,7 @@ class RegisterController extends Controller
         $credentials = $request->validate([
             'name' => 'required|min:3|max:10',
             'email' => 'required|email|lowercase|unique:users',
-            'password' => 'required|min:4|confirmed',
+            'password' => 'required|min:8|max:20|confirmed',
         ]);
 
         //Create User
