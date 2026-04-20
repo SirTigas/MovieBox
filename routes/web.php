@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WatchlistController;
 
-sleep(1);
 route::inertia('/', 'Home')->name('home');
 
 //Movie search
