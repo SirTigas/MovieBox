@@ -49,6 +49,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     //relationship
     public function watchlist(){
-        $this->hasMany(Watchlist::class);
+        return $this->hasMany(Watchlist::class);
     }
 }
