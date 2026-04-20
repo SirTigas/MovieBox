@@ -3,8 +3,7 @@ import Card from "../../Components/Card.vue";
 import InputField from "../../Components/InputField.vue";
 import PrimaryBtn from "../../Components/PrimaryBtn.vue";
 import Logo from "../../Components/Logo.vue";
-import CheckBoxInput from "../../Components/CheckBoxInput.vue";
-import {useForm} from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 import ErrorMessage from "../../Components/ErrorMessage.vue";
 
 const form = useForm({
@@ -12,40 +11,44 @@ const form = useForm({
     email: null,
     password: null,
     password_confirmation: null,
-})
+});
 
 const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset("password", "password_confirmation")
-    })
-}
+    form.post(route("register"), {
+        onFinish: () => form.reset("password", "password_confirmation"),
+    });
+};
 </script>
 
 <template>
-    <!--Register Component-->
-
     <Head title="Register" />
-    <section class="mx-auto flex max-w-7xl items-center justify-center px-6 py-12">
+
+    <!-- Page Container -->
+    <section class="flex items-center justify-center px-4 sm:px-6 py-8">
+
+        <!-- Card -->
         <Card
             class="
                 w-full
                 max-w-md
-                p-8
+                p-6 sm:p-8
                 shadow-xl
             "
         >
-            <!--Header-->
-            <div class="mb-8 text-center">
-                <Logo/>
 
-                <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
-                    Register to access complete MovieBox content.
+            <!-- Header -->
+            <div class="mb-6 sm:mb-8 text-center">
+                <Logo />
+
+                <p class="mt-3 sm:mt-4 text-sm text-slate-600 dark:text-slate-400">
+                    Create your account and start building your watchlist.
                 </p>
             </div>
 
-            <!--Form-->
-            <form @submit.prevent="submit" class="space-y-6">
+            <!-- Form -->
+            <form @submit.prevent="submit" class="space-y-5 sm:space-y-6">
 
+                <!-- Name -->
                 <div>
                     <label
                         for="name"
@@ -56,16 +59,15 @@ const submit = () => {
 
                     <InputField
                         id="name"
-                        placeholder="Enter your Name"
+                        placeholder="Enter your name"
                         type="text"
                         v-model="form.name"
                     />
 
-                    <ErrorMessage
-                      :error="$page.props.errors.name"
-                    />
+                    <ErrorMessage :error="$page.props.errors.name" />
                 </div>
 
+                <!-- Email -->
                 <div>
                     <label
                         for="email"
@@ -81,21 +83,17 @@ const submit = () => {
                         v-model="form.email"
                     />
 
-                    <ErrorMessage
-                        :error="$page.props.errors.email"
-                    />
+                    <ErrorMessage :error="$page.props.errors.email" />
                 </div>
 
+                <!-- Password -->
                 <div>
-                    <div class="mb-2 flex items-center justify-between">
-                        <label
-                            for="password"
-                            class="block text-sm font-medium text-slate-700 dark:text-slate-300"
-                        >
-                            Password
-                        </label>
-
-                    </div>
+                    <label
+                        for="password"
+                        class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300"
+                    >
+                        Password
+                    </label>
 
                     <InputField
                         id="password"
@@ -104,20 +102,17 @@ const submit = () => {
                         v-model="form.password"
                     />
 
-                    <ErrorMessage
-                        :error="$page.props.errors.password"
-                    />
+                    <ErrorMessage :error="$page.props.errors.password" />
                 </div>
 
+                <!-- Confirm Password -->
                 <div>
-                    <div class="mb-2 flex items-center justify-between">
-                        <label
-                            for="confirm_password"
-                            class="block text-sm font-medium text-slate-700 dark:text-slate-300"
-                        >
-                            Confirm Password
-                        </label>
-                    </div>
+                    <label
+                        for="confirm_password"
+                        class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300"
+                    >
+                        Confirm Password
+                    </label>
 
                     <InputField
                         id="confirm_password"
@@ -127,42 +122,42 @@ const submit = () => {
                     />
                 </div>
 
-                <div class="mt-8">
+                <!-- Submit -->
+                <div class="mt-6 sm:mt-8">
                     <PrimaryBtn
                         type="submit"
                         class="w-full px-4 py-3"
                         :disabled="form.processing"
                     >
-                        Register
+                        <span v-if="form.processing">Creating account...</span>
+                        <span v-else>Register</span>
                     </PrimaryBtn>
                 </div>
+
             </form>
 
-            <!--Login Link-->
-            <div>
-                <div class="my-6 flex items-center gap-4">
-                    <div class="h-px flex-1 bg-slate-200 dark:bg-slate-700"></div>
-                    <span class="text-xs uppercase tracking-wider text-slate-400">
-                        or
-                    </span>
-                    <div class="h-px flex-1 bg-slate-200 dark:bg-slate-700"></div>
-                </div>
-
-                <p class="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
-                    Already an account?
-                    <Link
-                        :href="route('login')"
-                        class="font-semibold text-orange-400 transition hover:text-orange-500"
-                    >
-                        Login
-                    </Link>
-                </p>
+            <!-- Divider -->
+            <div class="my-6 flex items-center gap-4">
+                <div class="h-px flex-1 bg-slate-200 dark:bg-slate-700"></div>
+                <span class="text-xs uppercase tracking-wider text-slate-400">
+                    or
+                </span>
+                <div class="h-px flex-1 bg-slate-200 dark:bg-slate-700"></div>
             </div>
 
+            <!-- Login Link -->
+            <p class="text-center text-sm text-slate-600 dark:text-slate-400">
+                Already have an account?
+                <Link
+                    :href="route('login')"
+                    class="font-semibold text-orange-400 transition hover:text-orange-500"
+                >
+                    Login
+                </Link>
+            </p>
         </Card>
     </section>
 </template>
 
 <style scoped>
-
 </style>
