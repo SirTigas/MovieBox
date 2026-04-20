@@ -41,7 +41,10 @@ class WatchlistController extends Controller
 
     //remove movie
     public function destroy(Request $request){
-        Watchlist::destroy($request->movieId);
+        $item = Watchlist::where('user_id', $request->user()->id)
+            ->where('imdb_id', $request->imdb_id);
+        $item->delete();
+
         return redirect()->back()->with('status', 'Movie Removed!');
     }
 }
