@@ -24,12 +24,14 @@ class WatchlistController extends Controller
             'imdb_id' => 'required|string|max:20|alpha_num',
             'title' => 'required|string|max:200',
             'poster' => 'nullable|url|max:500',
-            'year' => 'nullable|digits:4|integer',
+            'year' => 'nullable',
         ]);
 
+        $fields['user_id'] = $request->user()->id;
+
         //verify if exists register in db
-        $exists = Watchlist::where('user_id', $request->user()->id)
-            ->where('imdb_id', $request->imdb_id);
+        $exists = Watchlist::where('user_id', $fields['user_id'])
+            ->where('imdb_id', $fields['imdb_id']);
 
         if($exists->count()){
             return redirect()->back()->with('status', 'Already exists.');
@@ -44,7 +46,8 @@ class WatchlistController extends Controller
     //remove movie
     public function destroy(Request $request){
         $item = Watchlist::where('user_id', $request->user()->id)
-            ->where('imdb_id', $request->imdb_id);
+            ->where('imdb_id', $request->imdb_id)
+            ->firstOrFail();
         $item->delete();
 
         return redirect()->back()->with('status', 'Movie Removed!');

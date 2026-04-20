@@ -11,11 +11,11 @@ defineProps({
 })
 
 const form = useForm({
-    movieId: null,
+    imdb_id: null,
 })
 
 const submit = (id) => {
-    form.movieId = id
+    form.imdb_id = id
     form.delete(route('watchlist.destroy'))
 }
 </script>
@@ -37,6 +37,7 @@ const submit = (id) => {
         <AlertSuccess
             v-if="form.recentlySuccessful"
             :status="status"
+            class="mb-2"
         />
 
         <!-- Grid -->
@@ -74,6 +75,7 @@ const submit = (id) => {
                         <img
                             :src="movie.poster"
                             alt="Movie Poster"
+                            @error="$event.target.src = '/imgs/default/default-post.jpg'"
                             class="
                                 w-full h-full object-cover
                                 transition-transform duration-300
@@ -104,7 +106,7 @@ const submit = (id) => {
                         <p class="text-sm text-gray-300">
                             {{ movie.year }}
                         </p>
-                        <form @submit.prevent="submit(movie.id)" class="pointer-events-auto">
+                        <form @submit.prevent="submit(movie.imdb_id)" class="pointer-events-auto">
                             <DangerBtn type="submit" :disabled="form.processing" size="py-2" class="mt-4 w-full">
                                 <b>Remove</b>
                             </DangerBtn>

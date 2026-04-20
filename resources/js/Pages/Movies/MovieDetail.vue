@@ -73,6 +73,7 @@ const submitWatchlist = () => {
                 >
                     <img
                         :src="movieDetails.Poster"
+                        @error="$event.target.src = '/imgs/default/default-post.jpg'"
                         alt="Movie Backdrop"
                         class="h-full w-full object-cover max-h-150 contrast-50"
                     >
@@ -109,6 +110,7 @@ const submitWatchlist = () => {
                         >
                             <img
                                 :src="movieDetails.Poster"
+                                @error="$event.target.src = '/imgs/default/default-post.jpg'"
                                 alt="Movie Poster"
                                 class="h-full w-full object-cover"
                             >

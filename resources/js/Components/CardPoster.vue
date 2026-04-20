@@ -29,7 +29,8 @@ defineProps({
                 <div class="overflow-hidden">
 
                         <img
-                            :src="movie.Poster !== 'N/A' ? movie.Poster : '../../../public/imgs/default/default-post.jpg'"
+                            :src="movie.Poster"
+                            @error="$event.target.src = '/imgs/default/default-post.jpg'"
                             :alt="movie.Title"
                             class="w-full h-112 object-cover"
                         >
