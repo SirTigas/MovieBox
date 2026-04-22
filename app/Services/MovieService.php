@@ -18,7 +18,7 @@ class MovieService {
 
         $data = $response->json();
 
-        return $data['Response'] === 'True' ? $data : [];
+        return $data['Response'] == 'True' ? $data : [];
     }
 
     public function getMovieDetails(string $movieID): array{

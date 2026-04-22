@@ -70,12 +70,12 @@ const submit = () => {
         <!-- Movies + Side Buttons -->
         <div>
             <!-- Movies -->
-            <Paginate v-if="movies.length" :movies="movies" :currentPage="$page.props.currentPage">
+            <Paginate v-if="movies['Response'] === 'True'" :movies="movies" :currentPage="$page.props.currentPage">
                 <CardPoster :movies="movies.Search" />
             </Paginate>
 
             <!-- Empty State -->
-            <div v-else class="text-center py-16 text-slate-500 dark:text-slate-400">
+            <div v-else  class="text-center py-16 text-slate-500 dark:text-slate-400">
                 No movies found.
             </div>
         </div>

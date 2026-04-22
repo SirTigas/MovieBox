@@ -17,6 +17,7 @@ class SearchController extends Controller
         //search movie list
         if($search){
             $movies = $movieService->getMovies($search, $page);
+
         }
 
         // return movie list
