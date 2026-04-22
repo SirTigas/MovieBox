@@ -4,6 +4,7 @@ import DangerBtn from "../Components/DangerBtn.vue";
 import {Link, useForm} from "@inertiajs/vue3";
 import InputField from "../Components/InputField.vue";
 import AlertSuccess from "../Components/AlertSuccess.vue";
+import Paginate from "../../../Paginate.vue";
 
 defineProps({
     watchlist: Object,
