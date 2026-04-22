@@ -1,8 +1,11 @@
 <script setup>
 import CardPoster from "../../Components/CardPoster.vue";
-import { Head, useForm } from "@inertiajs/vue3";
+import {Head, router, useForm, usePage} from "@inertiajs/vue3";
 import InputField from "../../Components/InputField.vue";
 import PrimaryBtn from "../../Components/PrimaryBtn.vue";
+import {ref} from "vue";
+import SecondaryBtn from "../../Components/SecondaryBtn.vue";
+import Paginate from "../../../../Paginate.vue";
 
 defineProps({
     movies: Object,
@@ -13,7 +16,10 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.get(route("movie.search"));
+    form.get(route("movie.search"), {
+        preserveScroll: true,
+        replace: true,
+    });
 };
 </script>
 
@@ -25,12 +31,12 @@ const submit = () => {
         <!-- Header -->
         <div
             class="
-                flex flex-col sm:flex-row
-                items-start sm:items-center
-                justify-between
-                gap-4 sm:gap-6
-                mb-6 sm:mb-8
-            "
+            flex flex-col sm:flex-row
+            items-start sm:items-center
+            justify-between
+            gap-4 sm:gap-6
+            mb-6 sm:mb-8
+        "
         >
 
             <h1 class="text-2xl sm:text-3xl font-bold text-slate-950 dark:text-white">
@@ -51,24 +57,28 @@ const submit = () => {
                 <InputField
                     type="search"
                     placeholder="Search another movie..."
-                    v-model="form.search"
                     class="w-full py-2 sm:py-3"
+                    v-model="form.search"
                 />
 
-                <PrimaryBtn
-                    type="submit"
-                    class="w-full sm:w-auto"
-                    :disabled="form.processing"
-                >
-                    <span v-if="form.processing">Searching...</span>
-                    <span v-else>Search</span>
+                <PrimaryBtn class="w-full sm:w-auto">
+                    Search
                 </PrimaryBtn>
             </form>
         </div>
 
-        <!-- Movies -->
-        <CardPoster :movies="movies" />
+        <!-- Movies + Side Buttons -->
+        <div>
+            <!-- Movies -->
+            <Paginate v-if="movies.length" :movies="movies" :currentPage="$page.props.currentPage">
+                <CardPoster :movies="movies.Search" />
+            </Paginate>
 
+            <!-- Empty State -->
+            <div v-else class="text-center py-16 text-slate-500 dark:text-slate-400">
+                No movies found.
+            </div>
+        </div>
     </section>
 </template>
 

@@ -7,7 +7,7 @@ use App\Http\Controllers\WatchlistController;
 route::inertia('/', 'Home')->name('home');
 
 //Movie search
-route::get('/movie', SearchController::class)->name('movie.search');
+route::get('/movie', [SearchController::class, 'searchMovies'])->name('movie.search');
 
 //Movie Detail
 route::get('/movie-detail/{movieID}', [searchController::class, 'searchMovieDetail'])->name('movie.detail');

@@ -9,16 +9,21 @@ use Inertia\Inertia;
 class SearchController extends Controller
 {
     //Returns array of movies
-    public function __invoke(Request $request, MovieService $movieService){
+    public function searchMovies(Request $request, MovieService $movieService){
         $movies = [];
+        $search = $request->search;
+        $page = $request->input('page', 1);
 
-        if($request->filled('search')){
-            $movies = $movieService->getMovies($request->search);
+        //search movie list
+        if($search){
+            $movies = $movieService->getMovies($search, $page);
         }
 
+        // return movie list
         return Inertia::render('Movies/Movie', [
             'movies' => $movies,
-            'filters' => $request->search,
+            'search' => $search,
+            'currentPage' => $page,
         ]);
     }
 

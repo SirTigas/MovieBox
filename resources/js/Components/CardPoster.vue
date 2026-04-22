@@ -7,7 +7,6 @@ defineProps({
 <template>
     <!-- Movies Grid -->
     <div
-        v-if="movies.length"
         class="
             grid
             grid-cols-2
@@ -61,11 +60,6 @@ defineProps({
 
             </Link>
         </article>
-    </div>
-
-    <!-- Empty State -->
-    <div class="text-center py-16 text-slate-500 dark:text-slate-400">
-        No movies found.
     </div>
 </template>
 
