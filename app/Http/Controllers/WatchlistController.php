@@ -13,7 +13,7 @@ class WatchlistController extends Controller
         return Inertia::render('WatchList', [
             'status' => session('status'),
             'watchlist' => Watchlist::where('user_id', $request->user()->id)
-                ->paginate(40)],
+                ->paginate(10)],
         );
     }
 

@@ -1,10 +1,9 @@
 <script setup>
+import {useForm} from "@inertiajs/vue3";
 import PrimaryBtn from "../Components/PrimaryBtn.vue";
 import DangerBtn from "../Components/DangerBtn.vue";
-import {Link, useForm} from "@inertiajs/vue3";
-import InputField from "../Components/InputField.vue";
 import AlertSuccess from "../Components/AlertSuccess.vue";
-import Paginate from "../../../Paginate.vue";
+import Paginate from "../Components/Paginate.vue";
 
 defineProps({
     watchlist: Object,
@@ -153,6 +152,9 @@ const submit = (id) => {
             </Link>
         </div>
 
+        <Paginate
+            :paginateArray="watchlist"
+        />
     </section>
 </template>
 

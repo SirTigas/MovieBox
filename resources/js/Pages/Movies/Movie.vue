@@ -1,11 +1,9 @@
 <script setup>
 import CardPoster from "../../Components/CardPoster.vue";
-import {Head, router, useForm, usePage} from "@inertiajs/vue3";
+import {Head, useForm} from "@inertiajs/vue3";
 import InputField from "../../Components/InputField.vue";
 import PrimaryBtn from "../../Components/PrimaryBtn.vue";
-import {ref} from "vue";
-import SecondaryBtn from "../../Components/SecondaryBtn.vue";
-import Paginate from "../../../../Paginate.vue";
+import MoviePaginate from "../../Components/MoviePaginate.vue";
 
 defineProps({
     movies: Object,
@@ -70,9 +68,9 @@ const submit = () => {
         <!-- Movies + Side Buttons -->
         <div>
             <!-- Movies -->
-            <Paginate v-if="movies['Response'] === 'True'" :movies="movies" :currentPage="$page.props.currentPage">
+            <MoviePaginate v-if="movies['Response'] === 'True'" :movies="movies" :currentPage="$page.props.currentPage">
                 <CardPoster :movies="movies.Search" />
-            </Paginate>
+            </MoviePaginate>
 
             <!-- Empty State -->
             <div v-else  class="text-center py-16 text-slate-500 dark:text-slate-400">
